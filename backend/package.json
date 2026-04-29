@@ -1,0 +1,36 @@
+{
+  "name": "deltascreener-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Background-ingested stock screener backend backed by Supabase Postgres and Financial Modeling Prep.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "start": "node dist/index.js",
+    "job:universe": "tsx src/jobs/syncUniverse.ts",
+    "job:prices": "tsx src/jobs/batchPriceUpdate.ts",
+    "job:fundamentals": "tsx src/jobs/batchFundamentalUpdate.ts",
+    "schedule": "tsx src/jobs/scheduler.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "node-cron": "^4.0.7",
+    "p-limit": "^6.2.0",
+    "pg": "^8.16.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.18",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  }
+}
